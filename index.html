@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-B">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PET-HELP - Projeto Global</title>
+  <title>PET HELP - Projeto Global</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -17,14 +17,19 @@
       color: #fff;
       text-align: center;
       padding: 40px 20px;
+      position: relative;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
+    .lang-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
     }
-    header p {
-      font-size: 1.2em;
-      margin-top: 10px;
+    .lang-switch button {
+      margin-left: 5px;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
     }
     .container {
       max-width: 900px;
@@ -55,35 +60,50 @@
 </head>
 <body>
   <header>
+    <div class="lang-switch">
+      <button onclick="setLang('pt')">PT</button>
+      <button onclick="setLang('en')">EN</button>
+    </div>
     <h1>PET HELP</h1>
-    <p>Transformando vidas animais com tecnologia e propósito</p>
+    <p data-lang-pt="Transformando vidas animais com tecnologia e propósito" data-lang-en="Transforming animal lives with technology and purpose"></p>
   </header>
 
   <div class="container">
     <section class="btns">
-      <a href="whitepaper.pdf" target="_blank">📄 Ver Whitepaper</a>
-      <a href="#" onclick="alert('Em breve!')">💰 Comprar Token</a>
-      <a href="#" onclick="alert('Em breve!')">🐾 Apoiar a causa</a>
+      <a href="whitepaper.pdf" target="_blank">📄 Whitepaper</a>
+      <a href="#" onclick="alert('Em breve! / Coming soon!')">💰 Comprar Token / Buy Token</a>
+      <a href="#" onclick="alert('Em breve! / Coming soon!')">🐾 Apoiar / Support</a>
     </section>
 
     <section>
-      <h2>Sobre o Projeto</h2>
-      <p>PET HELP é um projeto global que visa combater o abandono e maus-tratos de animais por meio de unidades integradas com clínicas veterinárias, pet shops, centro cirúrgico e resgate. O projeto é financiado pelo token PEH, gerando impacto social real e valorização sustentável do token.</p>
+      <h2 data-lang-pt="Sobre o Projeto" data-lang-en="About the Project"></h2>
+      <p data-lang-pt="PET HELP é um projeto global que visa combater o abandono e maus-tratos de animais por meio de unidades integradas com clínicas veterinárias, pet shops, centro cirúrgico e resgate. O projeto é financiado pelo token PEH, gerando impacto social real e valorização sustentável do token."
+         data-lang-en="PET HELP is a global project that aims to combat animal abandonment and mistreatment through integrated units with veterinary clinics, pet shops, surgical centers, and rescue. The project is funded by the PEH token, generating real social impact and sustainable token appreciation."></p>
     </section>
 
     <section>
       <h2>Roadmap</h2>
       <ul>
-        <li><strong>Q3 2025:</strong> Testnet + site oficial</li>
-        <li><strong>Q4 2025:</strong> Venda de tokens + 1ª unidade PET HELP</li>
-        <li><strong>Q1 2026:</strong> Listagem em DEX + reforço de liquidez</li>
-        <li><strong>Q2 2026:</strong> DAO + expansão internacional</li>
+        <li data-lang-pt="Q3 2025: Testnet + site oficial" data-lang-en="Q3 2025: Testnet + official website"></li>
+        <li data-lang-pt="Q4 2025: Venda de tokens + 1ª unidade PET HELP" data-lang-en="Q4 2025: Token sale + 1st PET HELP unit"></li>
+        <li data-lang-pt="Q1 2026: Listagem em DEX + reforço de liquidez" data-lang-en="Q1 2026: DEX listing + liquidity reinforcement"></li>
+        <li data-lang-pt="Q2 2026: DAO + expansão internacional" data-lang-en="Q2 2026: DAO + international expansion"></li>
       </ul>
     </section>
   </div>
 
   <footer>
-    Contato: <a href="mailto:pethelp.peh@gmail.com" style="color: #bbffcc;">pethelp.peh@gmail.com</a>
+    <span data-lang-pt="Contato:" data-lang-en="Contact:"></span>
+    <a href="mailto:pethelp.peh@gmail.com" style="color: #bbffcc;">pethelp.peh@gmail.com</a>
   </footer>
+
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('[data-lang-pt]').forEach(el => {
+        el.innerText = el.getAttribute(lang === 'pt' ? 'data-lang-pt' : 'data-lang-en');
+      });
+    }
+    setLang('pt'); // padrão inicial em português
+  </script>
 </body>
 </html>
